@@ -1,0 +1,34 @@
+@import '../../../styles/settings.scss';
+
+$videoHeight: 45rem;
+
+.root {
+  position: relative;
+
+  .video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $videoHeight;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $videoHeight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .text {
+    color: $color-text-bright; 
+    font-size: 2.5rem;
+  }
+
+  
+}

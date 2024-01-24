@@ -21,7 +21,7 @@ const MainMenu = () => {
   };
 
   return (
-    <div>
+    <div className='fixed-top bg-light'>
       <Navbar expand="md" className="animated fadeIn">
         <NavbarToggler className="position-absolute" onClick={toggle}>
           <FaBars />

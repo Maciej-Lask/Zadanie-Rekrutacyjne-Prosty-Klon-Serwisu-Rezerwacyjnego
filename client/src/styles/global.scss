@@ -1,6 +1,8 @@
 @import './settings.scss';
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -8,7 +10,11 @@ body {
   margin: 0;
   padding: 0;
   color: $color-text-light;
-  background: $color-background;
+  // background: $color-background;
+  background-image: url('/img/backgrounds/home.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   font-family: $font-text;
   font-size: ($base-size * 1.3);
   line-height: 1.7;
@@ -17,7 +23,9 @@ body {
   min-height: 100vh;
 }
 
-a, a:hover, a:visited {
+a,
+a:hover,
+a:visited {
   text-decoration: none;
 }
 
@@ -31,10 +39,6 @@ a, a:hover, a:visited {
 }
 
 /* Bootstrap additions */
-
-.border-dashed {
-  border: 1px dashed $color-textfield-border !important;
-}
 
 .text-xl {
   font-size: ($base-size * 4);
