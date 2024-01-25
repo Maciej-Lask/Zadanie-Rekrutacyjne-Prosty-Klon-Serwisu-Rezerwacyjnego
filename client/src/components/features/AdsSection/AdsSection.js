@@ -1,9 +1,6 @@
 import { Container } from 'reactstrap';
 import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
-// import { useEffect } from 'react';
-import { API_URL } from '../../../config';
 import { getAllAds } from '../../../redux/adsRedux';
 import AdCard from '../../common/AdCard';
 

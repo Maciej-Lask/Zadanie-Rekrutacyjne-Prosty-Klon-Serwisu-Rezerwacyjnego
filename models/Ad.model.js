@@ -4,13 +4,13 @@ const adSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    minLength: 10,
+    minLength: 5,
     maxLength: 50,
   },
   content: {
     type: String,
     required: true,
-    minLength: 20,
+    minLength: 10,
     maxLength: 1000,
   },
   datePublished: {

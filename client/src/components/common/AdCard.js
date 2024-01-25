@@ -39,7 +39,7 @@ const AdCard = ({ ad }) => {
             </p>
           </div>
           <div className="product-card-footer">
-            <span className="product-text-title">$499.49</span>
+            <span className="product-text-title">${ad.price}</span>
             <div className="product-card-button">
               <a href={`/ad/${ad._id}`}>
               

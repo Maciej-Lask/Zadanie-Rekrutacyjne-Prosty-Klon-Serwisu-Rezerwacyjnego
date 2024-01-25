@@ -16,7 +16,7 @@ const BackgroundVideo = () => {
       setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
     }, 7000);
 
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    return () => clearInterval(intervalId); 
   }, [texts.length]);
 
   return (
