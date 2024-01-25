@@ -16,6 +16,9 @@ import AdAdd from './components/pages/AdAdd/AdAdd';
 import AdEdit from './components/pages/AdEdit/AdEdit';
 import AdDelete from './components/pages/AdDelete/AdDelete';
 
+import PrivacyPolicy from './components/pages/PrivacyPolicy/PrivacyPolicyPage';
+import TermsOfUse from './components/pages/TermsOfUse/TermsOfUsePage';
+
 import Search from './components/pages/Search/Search';
 
 import { API_URL } from './config';
@@ -73,10 +76,12 @@ const App = () => {
 
         <Route path="/search/:searchPhrase" element={<Search />} />
 
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-out" element={<SignOut />} />
-        
 
         <Route path="*" element={<NotFound />} />
       </Routes>

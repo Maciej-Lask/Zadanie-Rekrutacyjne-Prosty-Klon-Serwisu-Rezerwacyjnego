@@ -18,7 +18,12 @@
   }
   .carouselIcon {
     color: $color-text-bright;
+    background-color: $color-text-light;
+    // padding: 0.1rem;
+    border: 3px solid $color-text-light;
+    border-radius: 50%;
     font-size: $base-size * 3;
+    
   }
 
 }

@@ -1,9 +1,15 @@
+// Footer.jsx
+
+import styles from './Footer.module.scss';
+
 const Footer = () => (
-  <footer id="sticky-footer" className="py-4 mt-5 bg-dark text-white-50">
-    <div className="text-center">
-      <small>Copyright &copy; FullStackApp {new Date().getFullYear()}</small>
-    </div>
-  </footer>
+    <footer className={`bg-dark ${styles.footer}`}>
+      <div className="text-center">
+        <small>
+          Copyright &copy; Zadanie Rekrutacyjne {new Date().getFullYear()}
+        </small>
+      </div>
+    </footer>
 );
 
 export default Footer;

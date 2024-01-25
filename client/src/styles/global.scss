@@ -7,7 +7,7 @@
 }
 
 body {
-  margin: 0;
+
   padding: 0;
   color: $color-text-light;
   background-image: url('/img/backgrounds/home.jpg');
@@ -26,6 +26,21 @@ a,
 a:hover,
 a:visited {
   text-decoration: none;
+}
+.top-0 {
+  top: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
 }
 
 @import './typography.scss';

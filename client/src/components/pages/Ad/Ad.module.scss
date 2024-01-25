@@ -1,0 +1,15 @@
+@import '../../../styles/settings.scss';
+
+.ad {
+    background-color: $color-background;
+  .info {
+      border-right: 1rem solid $color-text-bright;
+      margin-top: 1.5rem;
+    background-color: $background-color_3;
+    p {
+      background-color: $color-background;
+      border-radius: 5px;
+      border-bottom: 2px solid $color-text-light;
+    }
+  }
+}

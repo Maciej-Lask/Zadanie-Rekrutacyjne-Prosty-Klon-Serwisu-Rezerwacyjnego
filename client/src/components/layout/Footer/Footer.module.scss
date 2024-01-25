@@ -1,0 +1,9 @@
+@import '../../../styles/settings.scss';
+
+.footer {
+  margin-top: 1.5rem;
+  color: $color-text-bright;
+  font-size: $base-size * 1.4;
+  padding: 3.5rem;
+  width: 100%;
+}

@@ -21,21 +21,23 @@ const Featured = () => {
     return resultArray;
   }, []);
 
+
   return (
     <Container className={styles.root}>
       <h1 className={styles.title}> Featured </h1>
       <Carousel
         indicators={false}
         interval={null}
-        prevIcon={<FaArrowAltCircleLeft  className={styles.carouselIcon}/>} 
-        nextIcon={<FaArrowAltCircleRight className={styles.carouselIcon}/>}
+        itemScope={true}
+        prevIcon={<FaArrowAltCircleLeft className={styles.carouselIcon} />}
+        nextIcon={<FaArrowAltCircleRight className={styles.carouselIcon} />}
         className={styles.carousel}
       >
         {chunkedAds.map((adsGroup, index) => (
           <Carousel.Item key={index}>
             <Row>
               {adsGroup.map((ad) => (
-                <Col key={ad._id} xs={12} md={4} lg={4}>
+                <Col key={ad._id} xs={12} md={4}>
                   <AdCard className={styles.card} ad={ad} />
                 </Col>
               ))}
