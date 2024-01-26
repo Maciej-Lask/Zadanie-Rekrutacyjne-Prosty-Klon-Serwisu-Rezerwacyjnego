@@ -23,7 +23,7 @@ const SearchForm = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </Form.Group>
-        <Button className="m-0" variant="outline-dark" onClick={handleSearch}>
+        <Button className="m-0 p-2" variant="outline-dark" onClick={handleSearch}>
           <FaMagnifyingGlass />
         </Button>
       </Form>

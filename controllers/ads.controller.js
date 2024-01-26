@@ -2,7 +2,6 @@ const Ad = require('../models/Ad.model');
 const fs = require('fs');
 const getImageFileType = require('../utils/getImageFileType');
 const User = require('../models/User.model');
-// const getCurrentUser = require('../controllers/auth.controller');
 // Obsługuje żądanie GET /api/ads
 exports.getAllAds = async (req, res) => {
   try {

@@ -54,16 +54,19 @@ const MainMenu = () => {
             ) : (
               // User is logged in
               <>
+                <NavItem>
+                  <NavLink href="/my-orders">My Orders</NavLink>
+                </NavItem>
                 <NavItem className="d-block d-xl-block">
                   <NavLink href="/sign-out">Log Out</NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink href="/ad/add">
                     <Button className="btn-outline" outline color="success">
                       Post ad
                     </Button>
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
               </>
             )}
           </Nav>

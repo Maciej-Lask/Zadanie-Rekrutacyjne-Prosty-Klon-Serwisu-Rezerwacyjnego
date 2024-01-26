@@ -31,7 +31,7 @@ const adSchema = new mongoose.Schema({
   },
   sellerInfo: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Referencja do modelu User
+    ref: 'User',
     required: true,
   },
 });

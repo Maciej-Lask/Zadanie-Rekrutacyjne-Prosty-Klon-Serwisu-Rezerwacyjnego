@@ -17,7 +17,6 @@ const AdAdd = () => {
 
   const [status, setStatus] = useState(null); // null, success, serverError, clientError, loginError, loading
   const [user, setUser] = useState(localStorage.getItem('user'));
-  // console.log(user);
   const handlePostAd = () => {
     // Implement the logic to post the ad here
     const fd = new FormData();

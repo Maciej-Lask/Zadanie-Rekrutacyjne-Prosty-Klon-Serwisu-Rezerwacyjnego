@@ -37,6 +37,7 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 
 // add routes
 app.use('/api', require('./routes/ads.routes'));
+app.use('/api', require('./routes/reservations.routes'));
 app.use('/auth', require('./routes/auth.routes'));
 
 app.get('*', (req, res) => {

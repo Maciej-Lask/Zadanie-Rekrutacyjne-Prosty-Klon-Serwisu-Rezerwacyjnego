@@ -16,6 +16,9 @@ import AdAdd from './components/pages/AdAdd/AdAdd';
 import AdEdit from './components/pages/AdEdit/AdEdit';
 import AdDelete from './components/pages/AdDelete/AdDelete';
 
+import Order from './components/pages/Order/Order';
+import MyOrders from './components/pages/MyOrders/MyOrdersPage.js';
+
 import PrivacyPolicy from './components/pages/PrivacyPolicy/PrivacyPolicyPage';
 import TermsOfUse from './components/pages/TermsOfUse/TermsOfUsePage';
 
@@ -38,7 +41,6 @@ const App = () => {
   useEffect(() => {
     // Try to load user data from local storage
     const userData = localStorage.getItem('user');
-    console.log(userData);
     if (userData) {
       const userObj = JSON.parse(userData);
       dispatch(logIn(userObj));
@@ -75,6 +77,9 @@ const App = () => {
         <Route path="/ad/delete/:id" element={<AdDelete />} />
 
         <Route path="/search/:searchPhrase" element={<Search />} />
+
+        <Route path="/order-details/:id" element={<Order />} />
+        <Route path="/my-orders" element={<MyOrders />} />
 
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

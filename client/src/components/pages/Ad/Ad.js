@@ -86,7 +86,7 @@ const Ad = () => {
               <p>Price: ${ad.price}</p>
               <p>Description: {ad.content}</p>
               <p>Seller: {ad.sellerInfo.login}</p>
-              <Link to={`/order`}>
+              <Link to={`/order-details/${id}`}>
                 <Button variant="outline-dark">Book a visit</Button>
               </Link>
             </Col>
