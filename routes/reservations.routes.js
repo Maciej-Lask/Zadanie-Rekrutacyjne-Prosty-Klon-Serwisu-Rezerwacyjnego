@@ -6,9 +6,9 @@ const authMiddleware = require('../utils/authMiddleware');
 
 router.get('/reservations', reservations.getAllReservations);
 
-router.get('/reservations/:id', reservations.getReservationById);
+router.get('/reservations/id/:id', reservations.getReservationById);
 
-router.get('/reservations/:id', reservations.getAllUserReservations);
+router.get('/reservations/user', authMiddleware, reservations.getAllUserReservations);
 
 router.post('/reservations', authMiddleware, reservations.createReservation);
 

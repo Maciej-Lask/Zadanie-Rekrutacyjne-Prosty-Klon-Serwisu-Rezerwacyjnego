@@ -24,10 +24,7 @@ import TermsOfUse from './components/pages/TermsOfUse/TermsOfUsePage';
 
 import Search from './components/pages/Search/Search';
 
-import { API_URL } from './config';
 import { logIn } from './redux/usersRedux';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
 
 import { fetchAds } from './redux/adsRedux';
 
@@ -39,31 +36,11 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // Try to load user data from local storage
     const userData = localStorage.getItem('user');
     if (userData) {
       const userObj = JSON.parse(userData);
       dispatch(logIn(userObj));
     } 
-    else {
-    //   // If not found in local storage, fetch from the server
-    //   fetch(`${API_URL}auth/user`, {
-    //     method: 'GET',
-    //     credentials: 'include',
-    //   })
-    //     .then((response) => response.json())
-    //     .then((response) => {
-    //       console.log(response);
-    //       if (response) {
-    //         dispatch(logIn(response));
-    //         // Save the fetched user data in local storage
-    //         localStorage.setItem('user', JSON.stringify(response));
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       console.error('Błąd podczas pobierania danych użytkownika:', error);
-    //     });
-    }
   }, [dispatch]);
 
   return (

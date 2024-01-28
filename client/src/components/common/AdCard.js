@@ -9,21 +9,7 @@ import styles from './AdCard.scss';
 const AdCard = ({ ad }) => {
   return (
     <div className="root d-flex flex-column">
-      {/* <Card className="mb-4">
-        <Card.Img
-          className="image"
-          variant="top"
-          src={`${IMAGES_URL}/${ad.image}`}
-          alt={ad.title}
-        />
-        <Card.Body>
-          <Card.Title>{ad.title}</Card.Title>
-          <Card.Text>Location: {ad.location}</Card.Text>
-          <Link to={`/ad/${ad._id}`}>
-            <Button variant="primary">Read more</Button>
-          </Link>
-        </Card.Body>
-      </Card> */}
+      
       <div className="product-card">
         <Link className="link" to={`/ad/${ad._id}`}>
           <img

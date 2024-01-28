@@ -36,7 +36,7 @@ exports.getAllUserReservations = async (req, res) => {
     res
       .status(500)
       .json({
-        error: 'Wystąpił błąd podczas pobierania rezerwacji użytkownika.',
+        error: 'Wystąpił błąd podczas pobierania rezerwacji użytkownika 123.',
       });
   }
 };

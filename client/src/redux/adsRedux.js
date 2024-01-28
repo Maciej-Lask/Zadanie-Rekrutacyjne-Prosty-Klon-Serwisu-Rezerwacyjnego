@@ -7,7 +7,6 @@ export const getAllAds = (state) => state.ads;
 export const getAdById = (state, adId) =>
   state.ads.find((ad) => ad._id === adId) || null;
 
-
 // actions
 const createActionName = (actionName) => `app/ads/${actionName}`;
 const CREATE_AD = createActionName('CREATE_AD');
