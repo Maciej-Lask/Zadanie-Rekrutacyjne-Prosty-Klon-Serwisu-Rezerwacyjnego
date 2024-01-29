@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Card, Button, Spinner, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { json, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getAdById } from '../../../redux/adsRedux';
 import { IMAGES_URL, API_URL } from '../../../config';
 import { Link } from 'react-router-dom';

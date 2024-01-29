@@ -29,7 +29,7 @@ const SignOut = () => {
     <Container className="d-flex flex-column align-items-center">
       <h1>You have been signed out</h1>
       <h5 className='mb-5'>You will be redirected to the homepage in 3 seconds</h5>
-      <Button variant="primary" onClick={() => navigate('/')}>Back to Home Now</Button>
+      <Button variant="outline-dark" onClick={() => navigate('/')}>Back to Home Now</Button>
     </Container>
   );
 };

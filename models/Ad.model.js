@@ -29,6 +29,11 @@ const adSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  featured: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
   sellerInfo: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

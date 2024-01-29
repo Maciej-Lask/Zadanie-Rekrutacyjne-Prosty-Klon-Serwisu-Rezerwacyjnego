@@ -21,6 +21,10 @@
     button {
       margin: 5px;
     }
+    button {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .orderInfo {
@@ -35,7 +39,17 @@
     object-fit: cover;
   }
   .svgIcon {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .orderItem {
+      display: flex;
+      flex-direction: column;
+    }
+    .orderInfo {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

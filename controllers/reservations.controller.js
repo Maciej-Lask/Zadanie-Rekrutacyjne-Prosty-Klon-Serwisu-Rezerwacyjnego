@@ -7,7 +7,7 @@ exports.getAllReservations = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas pobierania rezerwacji.' });
+      .json({ error: 'Error while getting all reservations' });
   }
 };
 
@@ -17,13 +17,13 @@ exports.getReservationById = async (req, res) => {
     if (!reservation) {
       return res
         .status(404)
-        .json({ error: 'Rezerwacja nie została znaleziona.' });
+        .json({ error: 'No reservation found with that ID' });
     }
     res.status(200).json(reservation);
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas pobierania rezerwacji.' });
+      .json({ error: 'Error while getting reservation' });
   }
 };
 
@@ -36,7 +36,7 @@ exports.getAllUserReservations = async (req, res) => {
     res
       .status(500)
       .json({
-        error: 'Wystąpił błąd podczas pobierania rezerwacji użytkownika 123.',
+        error: 'Error while getting all user reservations',
       });
   }
 };
@@ -65,7 +65,7 @@ exports.createReservation = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas tworzenia rezerwacji.' });
+      .json({ error: 'Error while creating reservation' });
   }
 };
 
@@ -77,19 +77,19 @@ exports.deleteReservation = async (req, res) => {
     if (!reservation) {
       return res
         .status(404)
-        .json({ error: 'Rezerwacja nie została znaleziona.' });
+        .json({ error: 'Not found' });
     }
     if (reservation.userInfo.toString() !== userId) {
       return res
         .status(403)
-        .json({ error: 'Brak uprawnień do usunięcia tej rezerwacji.' });
+        .json({ error: 'Unauthorized access' });
     }
     await Reservation.findByIdAndDelete(reservationId);
     res.status(204).send();
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas usuwania rezerwacji.' });
+      .json({ error: 'Error while deleting reservation' });
   }
 };
 
@@ -101,7 +101,7 @@ exports.updateReservation = async (req, res) => {
       name,
       comment,
       reservationDate,
-      reservationTimeEnd,
+      reservationTime,
       paymentMethod,
       adInfo,
     } = req.body;
@@ -109,25 +109,25 @@ exports.updateReservation = async (req, res) => {
     if (!reservation) {
       return res
         .status(404)
-        .json({ error: 'Rezerwacja nie została znaleziona.' });
+        .json({ error: 'No reservation found with that ID' });
     }
     if (reservation.userInfo.toString() !== userId) {
       return res
         .status(403)
-        .json({ error: 'Brak uprawnień do edycji tej rezerwacji.' });
+        .json({ error: 'Unauthorized access' });
     }
     await Reservation.findByIdAndUpdate(reservationId, {
       name,
       comment,
       reservationDate,
-      reservationTimeEnd,
+      reservationTime,
       paymentMethod,
       adInfo,
     });
-    res.status(200).json({ message: 'Rezerwacja została zaktualizowana.' });
+    res.status(200).json({ message: 'Reservation updated' });
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas aktualizacji rezerwacji.' });
+      .json({ error: 'Error while updating reservation' });
   }
 };

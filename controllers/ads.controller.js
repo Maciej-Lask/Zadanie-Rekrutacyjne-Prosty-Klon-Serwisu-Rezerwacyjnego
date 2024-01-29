@@ -2,35 +2,37 @@ const Ad = require('../models/Ad.model');
 const fs = require('fs');
 const getImageFileType = require('../utils/getImageFileType');
 const User = require('../models/User.model');
-// Obsługuje żądanie GET /api/ads
+
+// Handles the GET request to /api/ads
 exports.getAllAds = async (req, res) => {
   try {
-    const ads = await Ad.find().populate('sellerInfo'); // Populujemy pole "sellerInfo" autora
+    const ads = await Ad.find().populate('sellerInfo'); // Populating the "sellerInfo" field of the author
     res.status(200).json(ads);
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas pobierania ogłoszeń.' });
+      .json({ error: 'An error occurred while retrieving ads.' });
   }
 };
 
-// Obsługuje żądanie GET /api/ads/:id
+// Handles the GET request to /api/ads/:id
 exports.getAdById = async (req, res) => {
   try {
-    const ad = await Ad.findById(req.params.id).populate('sellerInfo'); // Populujemy pole "sellerInfo" autora
+    const ad = await Ad.findById(req.params.id).populate('sellerInfo'); // Populating the "sellerInfo" field of the author
     if (!ad) {
       return res
         .status(404)
-        .json({ error: 'Ogłoszenie nie zostało znalezione.' });
+        .json({ error: 'Ad not found.' });
     }
     res.status(200).json(ad);
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas pobierania ogłoszenia.' });
+      .json({ error: 'An error occurred while retrieving the ad.' });
   }
 };
-// Obsługuje żądanie POST /api/ads
+
+// Handles the POST request to /api/ads
 exports.createAd = async (req, res) => {
   try {
     const { title, content, price, location } = req.body;
@@ -59,7 +61,7 @@ exports.createAd = async (req, res) => {
         fs.unlinkSync(`./public/uploads/${req.file.filename}`);
       }
 
-      res.status(400).json({ error: 'Nieprawidłowe dane ogłoszenia.' });
+      res.status(400).json({ error: 'Invalid ad data.' });
     }
   } catch (error) {
     if (req.file) {
@@ -68,30 +70,28 @@ exports.createAd = async (req, res) => {
     console.error(error);
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas tworzenia ogłoszenia.' });
+      .json({ error: 'An error occurred while creating the ad.' });
   }
 };
 
-// Obsługuje żądanie DELETE /api/ads/:id
+// Handles the DELETE request to /api/ads/:id
 exports.deleteAd = async (req, res) => {
   try {
     const adId = req.params.id;
     const userId = req.session.userId;
-    // console.log(userId);
 
     const ad = await Ad.findById(adId);
     if (!ad) {
       return res
         .status(404)
-        .json({ error: 'Ogłoszenie nie zostało znalezione.' });
+        .json({ error: 'Ad not found.' });
     }
 
     if (ad.sellerInfo.toString() !== userId) {
       return res
         .status(403)
-        .json({ error: 'Brak uprawnień do usunięcia tego ogłoszenia.' });
+        .json({ error: 'Permission denied to delete this ad.' });
     }
-    // console.log(ad.sellerInfo.toString());
 
     if (ad.image) {
       const imagePath = `./public/uploads/${ad.image}`;
@@ -102,7 +102,7 @@ exports.deleteAd = async (req, res) => {
     if (!deletedAd) {
       return res
         .status(404)
-        .json({ error: 'Ogłoszenie nie zostało znalezione.' });
+        .json({ error: 'Ad not found.' });
     }
 
     res.status(204).send();
@@ -110,7 +110,7 @@ exports.deleteAd = async (req, res) => {
     console.error(error);
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas usuwania ogłoszenia.' });
+      .json({ error: 'An error occurred while deleting the ad.' });
   }
 };
 
@@ -125,18 +125,18 @@ exports.updateAd = async (req, res) => {
     if (!existingAd) {
       return res
         .status(404)
-        .json({ error: 'Ogłoszenie nie zostało znalezione.' });
+        .json({ error: 'Ad not found.' });
     }
 
     if (existingAd.sellerInfo.toString() !== userId) {
       return res
         .status(403)
-        .json({ error: 'Brak uprawnień do edycji tego ogłoszenia.' });
+        .json({ error: 'Permission denied to edit this ad.' });
     }
 
     if (!['image/jpeg', 'image/png', 'image/jpg'].includes(fileType)) {
       return res.status(400).json({
-        error: 'Nieprawidłowy format pliku.',
+        error: 'Invalid file format.',
       })
     }
 
@@ -167,11 +167,11 @@ exports.updateAd = async (req, res) => {
     console.error(error);
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas aktualizacji ogłoszenia.' });
+      .json({ error: 'An error occurred while updating the ad.' });
   }
 };
 
-// Obsługuje żądanie GET /api/ads/search/:searchPhrase
+// Handles the GET request to /api/ads/search/:searchPhrase
 exports.searchAdsByTitle = async (req, res) => {
   try {
     const searchPhrase = req.params.searchPhrase;
@@ -182,6 +182,6 @@ exports.searchAdsByTitle = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ error: 'Wystąpił błąd podczas wyszukiwania ogłoszeń.' });
+      .json({ error: 'An error occurred while searching for ads.' });
   }
 };

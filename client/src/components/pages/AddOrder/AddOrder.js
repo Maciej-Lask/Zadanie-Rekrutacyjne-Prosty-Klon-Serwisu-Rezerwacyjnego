@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { API_URL } from '../../../config';
+import styles from './AddOrder.module.scss';
 
 const Order = () => {
   const { id } = useParams();
@@ -37,26 +38,27 @@ const Order = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Wystąpił błąd podczas wysyłania rezerwacji.');
+        throw new Error('Error sending reservation data');
       }
 
       const data = await response.json();
-      console.log('Rezerwacja została wysłana:', data);
+      console.log('Reservation data:', data);
     } catch (error) {
-      console.error('Błąd:', error.message);
+      console.error('Error:', error.message);
     }
   };
 
   return (
-    <Container>
-      <h1>Order details</h1>
-      <Form onSubmit={handleSubmit}>
+    <Container className={styles.orderContainer}>
+      <h1 className={styles.orderTitle}>Order details</h1>
+      <Form className={styles.orderForm} onSubmit={handleSubmit}>
         <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label className={styles.orderLabel}>Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your name"
             name="name"
+            className={styles.orderInput}
             value={formData.name}
             onChange={handleChange}
             required
@@ -64,22 +66,24 @@ const Order = () => {
         </Form.Group>
 
         <Form.Group controlId="comment">
-          <Form.Label>Comment</Form.Label>
+          <Form.Label className={styles.orderLabel}>Comment</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
             placeholder="Enter your comment"
             name="comment"
+            className={styles.orderInput}
             value={formData.comment}
             onChange={handleChange}
           />
         </Form.Group>
 
         <Form.Group controlId="reservationDate">
-          <Form.Label>Date</Form.Label>
+          <Form.Label className={styles.orderLabel}>Date</Form.Label>
           <Form.Control
             type="date"
             name="reservationDate"
+            className={styles.orderInput}
             value={formData.reservationDate}
             onChange={handleChange}
             required
@@ -87,10 +91,11 @@ const Order = () => {
         </Form.Group>
 
         <Form.Group controlId="reservationTime">
-          <Form.Label>Hour</Form.Label>
+          <Form.Label className={styles.orderLabel}>Hour</Form.Label>
           <Form.Control
             type="time"
             name="reservationTime"
+            className={styles.orderInput}
             value={formData.reservationTime}
             onChange={handleChange}
             required
@@ -98,10 +103,11 @@ const Order = () => {
         </Form.Group>
 
         <Form.Group controlId="paymentMethod">
-          <Form.Label>Payment Method</Form.Label>
+          <Form.Label className={styles.orderLabel}>Payment Method</Form.Label>
           <Form.Control
             as="select"
             name="paymentMethod"
+            className={styles.orderInput}
             value={formData.paymentMethod}
             onChange={handleChange}
             required
@@ -113,11 +119,10 @@ const Order = () => {
           </Form.Control>
         </Form.Group>
 
-        {/* Assuming you have a way to select adInfo and userInfo */}
-        {/* You can use Form.Control as="select" for this */}
-        {/* Make sure to update formData accordingly */}
-
-        <Button variant="primary" type="submit">
+        <Button
+          variant="outline-dark"
+          type="submit"
+        >
           Submit
         </Button>
       </Form>

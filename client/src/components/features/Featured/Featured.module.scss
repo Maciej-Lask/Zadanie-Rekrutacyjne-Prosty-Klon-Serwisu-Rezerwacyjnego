@@ -3,7 +3,7 @@
 .root {
   padding: 2rem 0;
 
-  .title{
+  .title {
     text-align: center;
     font-size: $base-size * 5;
     color: $color-text-light;
@@ -14,16 +14,19 @@
 
   .carousel {
     background-color: $color-background;
-    padding: 5rem;
+    padding: 2rem;
   }
   .carouselIcon {
     color: $color-text-bright;
     background-color: $color-text-light;
-    // padding: 0.1rem;
-    border: 3px solid $color-text-light;
     border-radius: 50%;
     font-size: $base-size * 3;
-    
   }
+  
+  @media screen and (max-width: 768px) {
+    .cardsCol:nth-child(odd) {
+      display: none;
 
+    }
+  }
 }

@@ -3,7 +3,7 @@ import styles from './Featured.module.scss';
 import { getAllAds } from '../../../redux/adsRedux';
 import { useSelector } from 'react-redux';
 import { Row, Col, Carousel, Container } from 'react-bootstrap';
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
 import AdCard from '../../common/AdCard';
 
 const Featured = () => {
@@ -21,7 +21,6 @@ const Featured = () => {
     return resultArray;
   }, []);
 
-
   return (
     <Container className={styles.root}>
       <h1 className={styles.title}> Featured </h1>
@@ -29,15 +28,15 @@ const Featured = () => {
         indicators={false}
         interval={null}
         itemScope={true}
-        prevIcon={<FaArrowAltCircleLeft className={styles.carouselIcon} />}
-        nextIcon={<FaArrowAltCircleRight className={styles.carouselIcon} />}
+        prevIcon={<IoIosArrowDropleft className={styles.carouselIcon} />}
+        nextIcon={<IoIosArrowDropright className={styles.carouselIcon} />}
         className={styles.carousel}
       >
         {chunkedAds.map((adsGroup, index) => (
           <Carousel.Item key={index}>
-            <Row>
+            <Row >
               {adsGroup.map((ad) => (
-                <Col key={ad._id} xs={12} md={4}>
+                <Col className={styles.cardsCol} key={ad._id} xs={12} md={4}>
                   <AdCard className={styles.card} ad={ad} />
                 </Col>
               ))}

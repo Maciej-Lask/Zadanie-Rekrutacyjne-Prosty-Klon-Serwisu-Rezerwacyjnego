@@ -108,13 +108,13 @@ const MyOrders = () => {
                   variant="outline-dark"
                   onClick={() => navigate(`/ad/${reservation.adInfo}`)}
                 >
-                  <FaEye className={styles.svgIcon} />
+                  <FaEye className={styles.svgIcon} > See more </FaEye>
                 </Button>
                 <p>Date: {reservation.reservationDate}</p>
                 <p>Time: {reservation.reservationTime}</p>
                 <Button
                   variant="outline-dark"
-                  onClick={() => navigate(`/edit/${reservation._id}`)}
+                  onClick={() => navigate(`/my-orders/edit/${reservation._id}`)}
                 >
                   Edit reservation
                 </Button>

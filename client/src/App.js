@@ -16,8 +16,9 @@ import AdAdd from './components/pages/AdAdd/AdAdd';
 import AdEdit from './components/pages/AdEdit/AdEdit';
 import AdDelete from './components/pages/AdDelete/AdDelete';
 
-import Order from './components/pages/Order/Order';
+import Order from './components/pages/AddOrder/AddOrder.js';
 import MyOrders from './components/pages/MyOrders/MyOrdersPage.js';
+import EditOrder from './components/pages/EditOrder/EditOrder.js';
 
 import PrivacyPolicy from './components/pages/PrivacyPolicy/PrivacyPolicyPage';
 import TermsOfUse from './components/pages/TermsOfUse/TermsOfUsePage';
@@ -57,6 +58,7 @@ const App = () => {
 
         <Route path="/order-details/:id" element={<Order />} />
         <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/my-orders/edit/:id" element={<EditOrder />} />
 
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

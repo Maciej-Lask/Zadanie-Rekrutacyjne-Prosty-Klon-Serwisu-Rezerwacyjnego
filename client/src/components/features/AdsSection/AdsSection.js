@@ -5,7 +5,7 @@ import { getAllAds } from '../../../redux/adsRedux';
 import AdCard from '../../common/AdCard';
 
 
-import './AdsSection.scss';
+import styles from './AdsSection.module.scss';
 
 const AdsSection = () => {
 
@@ -16,7 +16,7 @@ const AdsSection = () => {
   return (
     <section className="trending-box">
       <Container>
-        <h2 className="pt-5 text-center">Looking for unforgettable experiences?</h2>
+        <h2 className={styles.title}>Looking for unforgettable experiences?</h2>
         <Row>
           {ads.map((ad) => (
             <Col key={ad._id} xs={12} md={4} lg={3}>
