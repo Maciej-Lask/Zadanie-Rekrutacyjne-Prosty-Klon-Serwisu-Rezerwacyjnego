@@ -13,7 +13,6 @@ const Search = () => {
     fetch(`${API_URL}api/ads/search/${searchPhrase}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setSearchResults(data);
         setLoading(false);
       })

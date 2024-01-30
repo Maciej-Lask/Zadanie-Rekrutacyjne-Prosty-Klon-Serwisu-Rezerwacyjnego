@@ -1,4 +1,5 @@
 const Ad = require('./models/Ad.model');
+const User = require('./models/User.model');
 
 const loadTestData = async () => {
   const data = [
@@ -9,6 +10,7 @@ const loadTestData = async () => {
       price: 1,
       location: 'Warsaw',
       image: 'image1.png',
+                      
       sellerInfo: '65afdd69de9d4e46a42508b0',
     },
     {
@@ -193,12 +195,22 @@ const loadTestData = async () => {
     },
   ];
 
+  // test user
+  const userData = [
+    {
+      _id: "65afdd69de9d4e46a42508b0",
+      login: 'Super Events',
+      password: 'password123',
+    },
+  ];
+
   try {
     let counter = await Ad.countDocuments();
     if (counter === 0) {
       console.log('No ads. Loading example data...');
       await Ad.create(data);
       console.log('Test data has been successfully loaded');
+      await User.create(userData);
     }
   } catch (err) {
     console.log(`Couldn't load test data`, err);

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../../config';
 import styles from './AddOrder.module.scss';
 
 const Order = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -26,7 +27,6 @@ const Order = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     try {
       const response = await fetch(`${API_URL}api/reservations`, {
@@ -40,12 +40,12 @@ const Order = () => {
       if (!response.ok) {
         throw new Error('Error sending reservation data');
       }
-
-      const data = await response.json();
-      console.log('Reservation data:', data);
+      
+      // const data = await response.json();
     } catch (error) {
       console.error('Error:', error.message);
     }
+    navigate('/my-orders');
   };
 
   return (
@@ -70,7 +70,7 @@ const Order = () => {
           <Form.Control
             as="textarea"
             rows={3}
-            placeholder="Enter your comment"
+            placeholder="Enter your comment ( optional )"
             name="comment"
             className={styles.orderInput}
             value={formData.comment}

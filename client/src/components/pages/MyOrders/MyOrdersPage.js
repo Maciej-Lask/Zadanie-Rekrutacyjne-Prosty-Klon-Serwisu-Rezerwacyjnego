@@ -20,7 +20,6 @@ const MyOrders = () => {
   const ads = useSelector((state) => getAllAds(state));
 
   useEffect(() => {
-    console.log('fetching data...');
     fetch(`${API_URL}api/reservations/user`)
       .then((response) => {
         if (!response.ok) {
@@ -58,15 +57,12 @@ const MyOrders = () => {
   };
 
   const confirmDelete = () => {
-    console.log('delete');
-    console.log(selectedReservationId);
     const options = {
       method: 'DELETE',
       credentials: 'include',
     };
     fetch(`${API_URL}api/reservations/${selectedReservationId}`, options)
       .then((res) => {
-        console.log('Response:', res);
         if (!res.ok) {
           throw new Error('Network response was not ok');
         }
@@ -79,7 +75,6 @@ const MyOrders = () => {
         if (data) {
           console.log('Data:', data);
         } else {
-          console.log('Success');
           setReloadFlag(!reloadFlag);
         }
       })

@@ -1,12 +1,11 @@
 const fs = require('fs');
 const Ad = require('../models/Ad.model');
 const getImageFileType = require('../utils/getImageFileType');
-const User = require('../models/User.model');
 
 // Handles the GET request to /api/ads
 exports.getAllAds = async (req, res) => {
   try {
-    const ads = await Ad.find().populate('sellerInfo'); // Populating the "sellerInfo" field of the author
+    const ads = await Ad.find().populate('sellerInfo'); 
     res.status(200).json(ads);
   } catch (error) {
     res
@@ -18,7 +17,7 @@ exports.getAllAds = async (req, res) => {
 // Handles the GET request to /api/ads/:id
 exports.getAdById = async (req, res) => {
   try {
-    const ad = await Ad.findById(req.params.id).populate('sellerInfo'); // Populating the "sellerInfo" field of the author
+    const ad = await Ad.findById(req.params.id).populate('sellerInfo'); 
     if (!ad) {
       return res
         .status(404)
@@ -56,7 +55,7 @@ exports.createAd = async (req, res) => {
 
       res.status(201).json(newAd);
     } else {
-      console.log(title, content, price, location, req.file);
+      
       if (req.file) {
         fs.unlinkSync(`./public/uploads/${req.file.filename}`);
       }

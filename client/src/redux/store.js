@@ -2,8 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import initialState from './initialState';
-// import reducers
-// import photos from './photosRedux';
+
 import adsReducer from './adsRedux';
 import usersReducer from './usersRedux';
 

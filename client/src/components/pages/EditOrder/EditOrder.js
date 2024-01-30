@@ -62,7 +62,6 @@ const EditOrder = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     try {
       const response = await fetch(`${API_URL}api/reservations/${id}`, {
@@ -77,8 +76,8 @@ const EditOrder = () => {
         throw new Error('Error sending reservation data');
       }
 
-      const data = await response.json();
-      console.log('Reservation data:', data);
+      // const data = await response.json();
+      // console.log('Reservation data:', data);
     } catch (error) {
       console.error('Error:', error.message);
     }

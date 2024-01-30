@@ -14,10 +14,6 @@ const DELETE_AD = createActionName('DELETE_AD');
 const EDIT_AD = createActionName('EDIT_AD');
 const UPDATE_ADS = createActionName('UPDATE_ADS');
 
-// action creators
-// export const createAd = (ad) => ({ type: CREATE_AD, payload: ad });
-// export const deleteAd = (adId) => ({ type: DELETE_AD, payload: adId });
-// export const editAd = (ad) => ({ type: EDIT_AD, payload: ad });
 export const updateAds = (updatedAdData) => ({
   type: UPDATE_ADS,
   payload: { ads: updatedAdData },

@@ -27,15 +27,11 @@ const Ad = () => {
   const [status, setStatus] = useState(null); // null, success, serverError, clientError, loginError, loading
 
   const handleDelete = () => {
-    console.log('delete');
     const options = {
       method: 'DELETE',
       credentials: 'include',
     };
     fetch(`${API_URL}api/ads/${id}`, options)
-      .then((res) => {
-        console.log('Response:', res);
-      })
       .then((res) => {
         if (res.status === 204) {
           setStatus('success');

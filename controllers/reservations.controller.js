@@ -52,9 +52,10 @@ exports.createReservation = async (req, res) => {
       adInfo,
     } = req.body;
     const userId = req.session.userId;
+    const commentToSave = comment ? comment : null;
     const newReservation = await Reservation.create({
       name,
-      comment,
+      comment: commentToSave,
       reservationDate,
       reservationTime,
       paymentMethod,
@@ -106,6 +107,7 @@ exports.updateReservation = async (req, res) => {
       adInfo,
     } = req.body;
     const reservation = await Reservation.findById(reservationId);
+    const commentToSave = comment ? comment : null;
     if (!reservation) {
       return res
         .status(404)
@@ -118,7 +120,7 @@ exports.updateReservation = async (req, res) => {
     }
     await Reservation.findByIdAndUpdate(reservationId, {
       name,
-      comment,
+      comment: commentToSave,
       reservationDate,
       reservationTime,
       paymentMethod,

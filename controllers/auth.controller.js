@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 
 exports.register = async (req, res) => {
   try {
-    console.log(req.body);
     const { login, password } = req.body;
 
     const existingUser = await User.findOne({ login: login });
@@ -42,7 +41,6 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    console.log(req.body);
     const { login, password } = req.body;
 
     if (
@@ -78,7 +76,6 @@ exports.getCurrentUser = async (req, res) => {
 };
 
 exports.logout = (req, res) => {
-  console.log(req.session);
   req.session.destroy((err) => {
     if (err) {
       console.error('Error while logging out:', err);

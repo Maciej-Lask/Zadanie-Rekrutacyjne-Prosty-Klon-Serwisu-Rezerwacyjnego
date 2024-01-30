@@ -5,28 +5,26 @@ const authMiddleware = require('../utils/authMiddleware');
 const imageUpload = require('../utils/imageUpload');
 const ads = require('../controllers/ads.controller');
 
-// GET /api/ads – który zwróci wszystkie ogłoszenia,
+// GET /api/ads 
 router.get('/ads', ads.getAllAds);
 
-// GET /api/ads/:id – który zwróci konkretne ogłoszenie,
+// GET /api/ads/:id
 router.get('/ads/:id', ads.getAdById);
 
-// POST /api/ads – do dodawania nowego ogłoszenia,
+// POST /api/ads
 router.post('/ads', authMiddleware, imageUpload.single('image'), ads.createAd);
 
-// DELETE /api/ads/:id – do usuwania ogłoszenia,
+// DELETE /api/ads/:id 
 router.delete('/ads/:id',authMiddleware, ads.deleteAd);
 
-// PUT lub PATCH /api/ads/:id – do edycji ogłoszenia,
+// PUT lub PATCH /api/ads/:id
 router.put(
   '/ads/:id',
   authMiddleware,
   imageUpload.single('image'),
   ads.updateAd
 );
-// router.patch('/ads/:id',authMiddleware, ads.partialUpdateAd);
 
-// GET /api/ads/search/:searchPhrase – który zwróci ogłoszenia pasujące tytułem do podanej frazy,
 router.get('/ads/search/:searchPhrase', ads.searchAdsByTitle);
 
 module.exports = router;

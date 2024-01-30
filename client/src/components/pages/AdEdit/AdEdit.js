@@ -41,18 +41,15 @@ const Ad = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submitted');
     const fd = new FormData();
     fd.append('title', title);
     fd.append('content', content);
     fd.append('price', price);
     fd.append('location', location);
-    // fd.append('image', image);
     if (image) {
       fd.append('image', image);
     }
     fd.append('user', ad.user);
-    // fd.append('publishDate', ad.publishDate);
     const options = {
       method: 'PUT',
       body: fd,
@@ -61,7 +58,6 @@ const Ad = () => {
 
     fetch(`${API_URL}api/ads/${id}`, options)
       .then((res) => {
-        console.log('Response:', res);
         if (res.status === 200) {
           setStatus('success');
           setTimeout(() => navigate('/'), 3000);

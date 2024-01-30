@@ -18,7 +18,6 @@ const AdAdd = () => {
   const [status, setStatus] = useState(null); // null, success, serverError, clientError, loginError, loading
   const [user, setUser] = useState(localStorage.getItem('user'));
   const handlePostAd = () => {
-    // Implement the logic to post the ad here
     const fd = new FormData();
     fd.append('title', title);
     fd.append('content', content);
@@ -26,7 +25,6 @@ const AdAdd = () => {
     fd.append('price', price);
     fd.append('location', location);
     fd.append('sellerInfo', user);
-    console.log(fd);
 
     const options = {
       method: 'POST',
@@ -53,7 +51,6 @@ const AdAdd = () => {
       return res.json();
     });
 
-    console.log('Posting ad:', fd);
   };
   return (
     <Container className="d-flex flex-column align-items-center">
