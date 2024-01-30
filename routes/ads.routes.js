@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const ads = require('../controllers/ads.controller');
 const authMiddleware = require('../utils/authMiddleware');
 const imageUpload = require('../utils/imageUpload');
+const ads = require('../controllers/ads.controller');
 
 // GET /api/ads – który zwróci wszystkie ogłoszenia,
 router.get('/ads', ads.getAllAds);

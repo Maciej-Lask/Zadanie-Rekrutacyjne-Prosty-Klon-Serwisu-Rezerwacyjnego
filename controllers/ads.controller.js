@@ -1,5 +1,5 @@
-const Ad = require('../models/Ad.model');
 const fs = require('fs');
+const Ad = require('../models/Ad.model');
 const getImageFileType = require('../utils/getImageFileType');
 const User = require('../models/User.model');
 
